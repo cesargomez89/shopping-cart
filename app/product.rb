@@ -17,7 +17,9 @@ class Product
     tax += 0.1 unless taxes_free?
     tax += 0.05 if imported?
 
-    (@price * tax).round(2)
+    return tax if tax == 0.0
+
+    (((@price * tax) / tax).round(0) * tax).round(2)
   end
 
   private
