@@ -63,7 +63,7 @@ describe Receipt do
     end
 
     it 'returns the expected result' do
-      _(@receipt.process).must_equal ''
+      _(@receipt.process).must_equal "1, imported bottle of perfume: 32.19/n1, bottle of perfume: 20.89/n1, packet of headache pills: 9.75/n3, imported boxes of chocolates: 35.55/n7.90/n98.38"
     end
   end
 end

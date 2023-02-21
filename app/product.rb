@@ -19,7 +19,7 @@ class Product
 
     return tax if tax == 0.0
 
-    ((@price * tax) * 20).round / 20.0
+    ((@price * tax) * 20).ceil / 20.0
   end
 
   private
