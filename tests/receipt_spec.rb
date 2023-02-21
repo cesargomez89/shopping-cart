@@ -43,9 +43,7 @@ describe Receipt do
     end
 
     it 'returns the expected result' do
-      _(@receipt.process).must_equal ''
-
-      puts @receipt.process
+      _(@receipt.process).must_equal "1, imported box of chocolates: 10.50/n1, imported bottle of perfume: 54.65/n7.65/n65.15"
     end
   end
 
@@ -66,8 +64,6 @@ describe Receipt do
 
     it 'returns the expected result' do
       _(@receipt.process).must_equal ''
-
-      puts @receipt.process
     end
   end
 end
