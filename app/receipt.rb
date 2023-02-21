@@ -14,8 +14,8 @@ class Receipt
 
     product_lines.concat(
       [
-        format('%.2f', sales_taxes),
-        format('%.2f', total)
+        format('Sales taxes: %.2f', sales_taxes),
+        format('Total: %.2f', total)
       ]
     ).join('/n')
   end
