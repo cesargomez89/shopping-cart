@@ -13,14 +13,20 @@ class Product
   end
 
   def taxes
-    return 0.0 if taxes_free?
+    tax = 0.0
+    tax += 0.1 unless taxes_free?
+    tax += 0.05 if imported?
 
-    (@price * 0.1).round(2)
+    (@price * tax).round(2)
   end
 
   private
 
   def taxes_free?
     EXCLUDED_PRODUCTS.include? @category
+  end
+
+  def imported?
+    @name.match?('imported')
   end
 end

@@ -10,13 +10,17 @@ class Receipt
   def process
     return '' if @products.empty?
 
-    product_lines.concat(["%.2f" % sales_taxes, total]).join("/n")
+    product_lines.concat(
+      [
+        "%.2f" % sales_taxes,
+        "%.2f" % total]
+    ).join("/n")
   end
 
   private
 
   def build_line(qty, product)
-    "#{qty}, #{product.name}: #{qty * product.net_price}"
+    "#{qty}, #{product.name}: %.2f" % (qty * product.net_price)
   end
 
   def product_lines
