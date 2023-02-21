@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class Product
   attr_accessor :name, :price, :category
+
   EXCLUDED_PRODUCTS = %i[books food medical].freeze
 
   def initialize(name:, price:, category:)
@@ -14,10 +17,11 @@ class Product
 
   def taxes
     tax = 0.0
+
+    return tax if taxes_free? && !imported?
+
     tax += 0.1 unless taxes_free?
     tax += 0.05 if imported?
-
-    return tax if tax == 0.0
 
     ((@price * tax) * 20).ceil / 20.0
   end

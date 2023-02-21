@@ -1,2 +1,4 @@
+# frozen_string_literal: true
+
 require 'byebug'
-Dir['./app/*.rb'].each { |file| require file }
+Dir['./app/*.rb'].sort.each { |file| require file }

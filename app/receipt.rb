@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Receipt
   def self.for(*args)
     new(*args).process
@@ -12,15 +14,16 @@ class Receipt
 
     product_lines.concat(
       [
-        "%.2f" % sales_taxes,
-        "%.2f" % total]
-    ).join("/n")
+        format('%.2f', sales_taxes),
+        format('%.2f', total)
+      ]
+    ).join('/n')
   end
 
   private
 
   def build_line(qty, product)
-    "#{qty}, #{product.name}: %.2f" % (qty * product.net_price)
+    format("#{qty}, #{product.name}: %.2f", (qty * product.net_price))
   end
 
   def product_lines
@@ -32,6 +35,6 @@ class Receipt
   end
 
   def total
-    @products.sum {|qty, product| qty * product.net_price }
+    @products.sum { |qty, product| qty * product.net_price }
   end
 end
